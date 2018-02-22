@@ -1,4 +1,4 @@
-package sample;
+package encryptor;
 
 public class CesarEncryptor {
 
