@@ -14,6 +14,9 @@ import java.util.Scanner;
 public class Controller {
     public void Controller(){}
 
+    private Encryptor cesarEncryptor = new CesarEncryptor();
+    private TrithemiusEncryptor trithemiusEncryptor = new TrithemiusEncryptor();
+
     @FXML
     private TextArea encryptText;
 
@@ -22,16 +25,16 @@ public class Controller {
 
     @FXML
     private void encryptText() {
-        String encryptedText = CesarEncryptor.encrypt(encryptText.getText(),
-                Integer.valueOf(shiftNumber.getText()));
+        String encryptedText = trithemiusEncryptor.encryptPhrase(encryptText.getText(),
+                shiftNumber.getText());
         encryptText.setText(encryptedText);
     }
 
     @FXML
     private void decryptText() {
-        String decryptedText = CesarEncryptor.decrypt(encryptText.getText(),
-                Integer.valueOf(shiftNumber.getText()));
-        encryptText.setText(decryptedText);
+        String encryptedText = trithemiusEncryptor.decryptPhrase(encryptText.getText(),
+                shiftNumber.getText());
+        encryptText.setText(encryptedText);
     }
 
     @FXML

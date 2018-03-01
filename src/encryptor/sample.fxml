@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="encryptor.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="encryptor.Controller">
    <children>
-      <TextArea fx:id="encryptText" layoutX="5.0" layoutY="5.0" prefHeight="365.0" prefWidth="805.0" />
-      <Button fx:id="encryptButton" layoutX="5.0" layoutY="375.0" mnemonicParsing="false" onAction="#encryptText" text="Encrypt" />
-      <Button fx:id="decryptButton" layoutX="75" layoutY="375.0" mnemonicParsing="false" onAction="#decryptText" text="Decrypt" />
-      <TextField fx:id="shiftNumber" layoutX="145.0" layoutY="375.0" prefHeight="20.0" prefWidth="50.0" text="1" />
-      <Button fx:id="file_open" layoutX="205.0" layoutY="375.0" prefHeight="20.0" mnemonicParsing="false" prefWidth="50.0" text="Open" onAction="#choseFile" />
-      <Button fx:id="file_save" layoutX="265.0" layoutY="375.0" prefHeight="20.0" mnemonicParsing="false" prefWidth="50.0" text="Save" onAction="#saveFile" />
+      <TextArea fx:id="encryptText" layoutX="5.0" layoutY="30.0" prefHeight="365.0" prefWidth="805.0" />
+      <TextField fx:id="shiftNumber" layoutX="145.0" layoutY="400.0" prefHeight="20.0" prefWidth="50.0" text="1" />
+      <Button fx:id="file_open" layoutX="205.0" layoutY="400.0" mnemonicParsing="false" onAction="#choseFile" prefHeight="20.0" prefWidth="50.0" text="Open" />
+      <Button fx:id="file_save" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#saveFile" prefHeight="20.0" prefWidth="50.0" text="Save" />
+      <MenuButton layoutY="2.0" layoutX="5" mnemonicParsing="false" text="Cesar">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Encrypt" onAction="#encryptText"/>
+          <MenuItem mnemonicParsing="false" text="Decrypt" onAction="#decryptText" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutY="2.0" layoutX="70" mnemonicParsing="false" text="Trithemius">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Encrypt" />
+            <MenuItem mnemonicParsing="false" text="Decrypt" />
+         </items>
+      </MenuButton>
    </children>
 </Pane>
