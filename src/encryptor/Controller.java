@@ -24,16 +24,30 @@ public class Controller {
     private TextField shiftNumber;
 
     @FXML
-    private void encryptText() {
+    private void encryptTextWithPhrase() {
         String encryptedText = trithemiusEncryptor.encryptPhrase(encryptText.getText(),
                 shiftNumber.getText());
         encryptText.setText(encryptedText);
     }
 
     @FXML
-    private void decryptText() {
+    private void decryptTextWithPhrase() {
         String encryptedText = trithemiusEncryptor.decryptPhrase(encryptText.getText(),
                 shiftNumber.getText());
+        encryptText.setText(encryptedText);
+    }
+
+    @FXML
+    private void encryptText() {
+        String encryptedText = cesarEncryptor.encrypt(encryptText.getText(),
+                Integer.valueOf(shiftNumber.getText()));
+        encryptText.setText(encryptedText);
+    }
+
+    @FXML
+    private void decryptText() {
+        String encryptedText = cesarEncryptor.decrypt(encryptText.getText(),
+                Integer.valueOf(shiftNumber.getText()));
         encryptText.setText(encryptedText);
     }
 

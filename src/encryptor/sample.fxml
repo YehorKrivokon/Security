@@ -21,8 +21,8 @@
       </MenuButton>
       <MenuButton layoutY="2.0" layoutX="70" mnemonicParsing="false" text="Trithemius">
          <items>
-            <MenuItem mnemonicParsing="false" text="Encrypt" />
-            <MenuItem mnemonicParsing="false" text="Decrypt" />
+            <MenuItem mnemonicParsing="false" text="Encrypt with phrase" onAction="#encryptTextWithPhrase"/>
+            <MenuItem mnemonicParsing="false" text="Decrypt with phrase" onAction="#decryptTextWithPhrase"/>
          </items>
       </MenuButton>
    </children>

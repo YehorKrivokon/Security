@@ -4,28 +4,34 @@ public class TrithemiusEncryptor extends Encryptor {
 
     public String encryptPhrase(String text, String phrase) {
         StringBuilder textPhrase = new StringBuilder(phrase);
+        StringBuilder res = new StringBuilder();
         while (textPhrase.length() < text.length()) {
             textPhrase.append(phrase);
         }
         int shiftNumber = 0;
         for(int i = 0; i < text.length(); ++i) {
-            shiftNumber = (text.charAt(i) + textPhrase.charAt(i)) % Character.MAX_VALUE;
+            res.append(encryptChar(text.charAt(i),(text.charAt(i) + textPhrase.charAt(i)) % Character.MAX_VALUE));
         }
+        System.out.println(5 % 1000);
         System.out.println(shiftNumber);
-        return encrypt(text, shiftNumber);
+        System.out.println(textPhrase);
+        return res.toString();
     }
 
     public String decryptPhrase(String text, String phrase) {
         StringBuilder textPhrase = new StringBuilder(phrase);
+        StringBuilder res = new StringBuilder();
         while (textPhrase.length() < text.length()) {
             textPhrase.append(phrase);
         }
         int shiftNumber = 0;
         for(int i = 0; i < text.length(); ++i) {
-            shiftNumber = (text.charAt(i) + Character.MAX_VALUE - (textPhrase.charAt(i) % Character.MAX_VALUE)) % Character.MAX_VALUE;
+            res.append(decryptChar(text.charAt(i),(text.charAt(i) - textPhrase.charAt(i)) % Character.MAX_VALUE));
         }
+        System.out.println(5 % 1000);
         System.out.println(shiftNumber);
-        return decrypt(text, shiftNumber);
+        System.out.println(textPhrase);
+        return res.toString();
     }
 
     @Override
