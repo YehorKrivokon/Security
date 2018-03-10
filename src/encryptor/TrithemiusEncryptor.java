@@ -1,75 +1,62 @@
 package encryptor;
 
-public class TrithemiusEncryptor extends Encryptor {
+class TrithemiusEncryptor extends CesarEncryptor {
 
-    public String encryptPhrase(String text, String phrase) {
+    String encrypt(String text, String phrase) {
         StringBuilder textPhrase = new StringBuilder(phrase);
         StringBuilder res = new StringBuilder();
         while (textPhrase.length() < text.length()) {
             textPhrase.append(phrase);
         }
-        int shiftNumber = 0;
         for(int i = 0; i < text.length(); ++i) {
-            res.append(encryptChar(text.charAt(i),(text.charAt(i) + textPhrase.charAt(i)) % Character.MAX_VALUE));
+            res.append(encryptChar(text.charAt(i), textPhrase.charAt(i)));
         }
-        System.out.println(5 % 1000);
-        System.out.println(shiftNumber);
-        System.out.println(textPhrase);
         return res.toString();
     }
 
-    public String decryptPhrase(String text, String phrase) {
+    String encrypt(String text, int a, int b, int c) {
+        StringBuilder res = new StringBuilder();
+        for(int i = 0; i < text.length(); ++i) {
+            res.append(encryptChar(text.charAt(i), a * i * i + b * i + c));
+        }
+        return res.toString();
+    }
+
+    String encrypt(String text, int a, int b) {
+        StringBuilder res = new StringBuilder();
+        for(int i = 0; i < text.length(); ++i) {
+            res.append(encryptChar(text.charAt(i), a * i + b));
+        }
+        return res.toString();
+    }
+
+    String decrypt(String text, String phrase) {
         StringBuilder textPhrase = new StringBuilder(phrase);
         StringBuilder res = new StringBuilder();
         while (textPhrase.length() < text.length()) {
             textPhrase.append(phrase);
         }
-        int shiftNumber = 0;
         for(int i = 0; i < text.length(); ++i) {
-            res.append(decryptChar(text.charAt(i),(text.charAt(i) - textPhrase.charAt(i)) % Character.MAX_VALUE));
+            res.append(decryptChar(text.charAt(i),textPhrase.charAt(i)));
         }
-        System.out.println(5 % 1000);
-        System.out.println(shiftNumber);
-        System.out.println(textPhrase);
         return res.toString();
     }
 
-    @Override
-    public String encrypt(String text, int shiftNumber) {
-        if(text.isEmpty()) {
-            throw new RuntimeException("Text is empty");
-        } else {
-            StringBuilder res = new StringBuilder();
-
-            for(int i = 0; i < text.length(); ++i) {
-                res.append(encryptChar(text.charAt(i), shiftNumber));
-            }
-
-            return res.toString();
+    String decrypt(String text, int a, int b) {
+        StringBuilder res = new StringBuilder();
+        for(int i = 0; i < text.length(); ++i) {
+            res.append(decryptChar(text.charAt(i), a * i + b));
         }
+        return res.toString();
     }
 
-    @Override
-    public String decrypt(String text, int shiftNumber) {
-        if(text.isEmpty()) {
-            throw new RuntimeException("Text is empty");
-        } else {
-            StringBuilder res = new StringBuilder();
-
-            for(int i = 0; i < text.length(); ++i) {
-                res.append(decryptChar(text.charAt(i), shiftNumber));
-            }
-
-            return res.toString();
+    String decrypt(String text, int a, int b, int c) {
+        StringBuilder res = new StringBuilder();
+        for(int i = 0; i < text.length(); ++i) {
+            res.append(decryptChar(text.charAt(i), a * i * i + b * i + c));
         }
+        return res.toString();
     }
 
-    private char encryptChar(char c, int shiftNumber) {
-        return (char)(c + shiftNumber);
-    }
-
-    private char decryptChar(char c, int shiftNumber) {
-        return (char)(c - shiftNumber);
-    }
 
 }

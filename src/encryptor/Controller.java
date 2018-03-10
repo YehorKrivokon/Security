@@ -24,28 +24,78 @@ public class Controller {
     private TextField shiftNumber;
 
     @FXML
-    private void encryptTextWithPhrase() {
-        String encryptedText = trithemiusEncryptor.encryptPhrase(encryptText.getText(),
-                shiftNumber.getText());
+    private TextField linearA;
+
+    @FXML
+    private TextField linearB;
+
+    @FXML
+    private TextField notLinearA;
+
+    @FXML
+    private TextField notLinearB;
+
+    @FXML
+    private TextField notLinearC;
+
+    @FXML
+    private TextField phrase;
+
+    @FXML
+    private void encryptTextWithTrithemiusPhrase() {
+        String encryptedText = trithemiusEncryptor.encrypt(encryptText.getText(), phrase.getText());
         encryptText.setText(encryptedText);
     }
 
     @FXML
-    private void decryptTextWithPhrase() {
-        String encryptedText = trithemiusEncryptor.decryptPhrase(encryptText.getText(),
-                shiftNumber.getText());
+    private void encryptTextWithTrithemiusLinear() {
+        String encryptedText = trithemiusEncryptor.encrypt(encryptText.getText(),
+                Integer.valueOf(linearA.getText()),
+                Integer.valueOf(linearB.getText()));
         encryptText.setText(encryptedText);
     }
 
     @FXML
-    private void encryptText() {
+    private void encryptTextWithTrithemiusNotLinear() {
+        String encryptedText = trithemiusEncryptor.encrypt(encryptText.getText(),
+                Integer.valueOf(notLinearA.getText()),
+                Integer.valueOf(notLinearB.getText()),
+                Integer.valueOf(notLinearC.getText()));
+        encryptText.setText(encryptedText);
+    }
+
+    @FXML
+    private void decryptTextWithTrithemiusPhrase() {
+        String encryptedText = trithemiusEncryptor.decrypt(encryptText.getText(), shiftNumber.getText());
+        encryptText.setText(encryptedText);
+    }
+
+    @FXML
+    private void encryptTextWithCesar() {
         String encryptedText = cesarEncryptor.encrypt(encryptText.getText(),
                 Integer.valueOf(shiftNumber.getText()));
         encryptText.setText(encryptedText);
     }
 
     @FXML
-    private void decryptText() {
+    private void decryptTextWithTrithemiusLinear() {
+        String encryptedText = trithemiusEncryptor.decrypt(encryptText.getText(),
+                Integer.valueOf(linearA.getText()),
+                Integer.valueOf(linearB.getText()));
+        encryptText.setText(encryptedText);
+    }
+
+    @FXML
+    private void decryptTextWithTrithemiusNotLinear() {
+        String encryptedText = trithemiusEncryptor.decrypt(encryptText.getText(),
+                Integer.valueOf(notLinearA.getText()),
+                Integer.valueOf(notLinearB.getText()),
+                Integer.valueOf(notLinearC.getText()));
+        encryptText.setText(encryptedText);
+    }
+
+    @FXML
+    private void decryptTextWithCesar() {
         String encryptedText = cesarEncryptor.decrypt(encryptText.getText(),
                 Integer.valueOf(shiftNumber.getText()));
         encryptText.setText(encryptedText);

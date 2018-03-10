@@ -1,29 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="encryptor.Controller">
-   <children>
-      <TextArea fx:id="encryptText" layoutX="5.0" layoutY="30.0" prefHeight="365.0" prefWidth="805.0" />
-      <TextField fx:id="shiftNumber" layoutX="145.0" layoutY="400.0" prefHeight="20.0" prefWidth="50.0" text="1" />
-      <Button fx:id="file_open" layoutX="205.0" layoutY="400.0" mnemonicParsing="false" onAction="#choseFile" prefHeight="20.0" prefWidth="50.0" text="Open" />
-      <Button fx:id="file_save" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#saveFile" prefHeight="20.0" prefWidth="50.0" text="Save" />
-      <MenuButton layoutY="2.0" layoutX="5" mnemonicParsing="false" text="Cesar">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Encrypt" onAction="#encryptText"/>
-          <MenuItem mnemonicParsing="false" text="Decrypt" onAction="#decryptText" />
-        </items>
-      </MenuButton>
-      <MenuButton layoutY="2.0" layoutX="70" mnemonicParsing="false" text="Trithemius">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Encrypt with phrase" onAction="#encryptTextWithPhrase"/>
-            <MenuItem mnemonicParsing="false" text="Decrypt with phrase" onAction="#decryptTextWithPhrase"/>
-         </items>
-      </MenuButton>
-   </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0"
+      prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="encryptor.Controller">
+    <children>
+        <TextArea fx:id="encryptText" layoutX="5.0" layoutY="130.0" prefHeight="415.0" prefWidth="805.0"/>
+        <TextField fx:id="shiftNumber" layoutX="35.0" layoutY="35.0" prefHeight="20.0" prefWidth="120.0" text="1"/>
+        <Button fx:id="file_open" layoutX="705.0" layoutY="5.0" mnemonicParsing="false" onAction="#choseFile"
+                prefHeight="20.0" prefWidth="50.0" text="Open"/>
+        <Button fx:id="file_save" layoutX="760.0" layoutY="5.0" mnemonicParsing="false" onAction="#saveFile"
+                prefHeight="20.0" prefWidth="50.0" text="Save"/>
+        <MenuButton layoutX="5" layoutY="5.0" mnemonicParsing="false" prefWidth="150" text="Cesar">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#encryptTextWithCesar" text="Encrypt"/>
+                <MenuItem mnemonicParsing="false" onAction="#decryptTextWithCesar" text="Decrypt"/>
+            </items>
+        </MenuButton>
+        <Label layoutX="5" layoutY="45.0" text="Shift"/>
+        <MenuButton layoutX="160" layoutY="5.0" prefWidth="150" mnemonicParsing="false" text="Trithemius">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#encryptTextWithTrithemiusPhrase"
+                          text="Encrypt with phrase"/>
+                <MenuItem mnemonicParsing="false" onAction="#decryptTextWithTrithemiusPhrase"
+                          text="Decrypt with phrase"/>
+                <MenuItem mnemonicParsing="false" onAction="#encryptTextWithTrithemiusLinear"
+                          text="Encrypt with linear"/>
+                <MenuItem mnemonicParsing="false" onAction="#decryptTextWithTrithemiusLinear"
+                          text="Decrypt with linear"/>
+                <MenuItem mnemonicParsing="false" onAction="#encryptTextWithTrithemiusNotLinear"
+                          text="Encrypt with notLinear"/>
+                <MenuItem mnemonicParsing="false" onAction="#decryptTextWithTrithemiusNotLinear"
+                          text="Decrypt with notLinear"/>
+            </items>
+        </MenuButton>
+        <Label layoutX="160" layoutY="45.0" text="Phrase"/>
+        <TextField fx:id="phrase" layoutX="200.0" layoutY="35.0" prefHeight="20.0" prefWidth="110.0" text="1"/>
+        <Label layoutX="227" layoutY="75.0" text="p + "/>
+        <TextField fx:id="linearA" layoutX="160.0" layoutY="65.0" prefHeight="20.0" prefWidth="60.0" text="1"/>
+        <TextField fx:id="linearB" layoutX="250.0" layoutY="65.0" prefHeight="20.0" prefWidth="60.0" text="1"/>
+
+        <Label layoutX="192" layoutY="105.0" text="p^2 + "/>
+        <Label layoutX="260" layoutY="105.0" text="p + "/>
+        <TextField fx:id="notLinearA" layoutX="160.0" layoutY="95.0" prefHeight="20.0" prefWidth="30.0" text="1"/>
+        <TextField fx:id="notLinearB" layoutX="228.0" layoutY="95.0" prefHeight="20.0" prefWidth="30.0" text="1"/>
+        <TextField fx:id="notLinearC" layoutX="280.0" layoutY="95.0" prefHeight="20.0" prefWidth="30.0" text="1"/>
+    </children>
 </Pane>

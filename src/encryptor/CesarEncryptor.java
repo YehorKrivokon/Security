@@ -32,11 +32,4 @@ public class CesarEncryptor extends Encryptor {
         }
     }
 
-    private char encryptChar(char c, int shiftNumber) {
-        return (char)(c + shiftNumber);
-    }
-
-    private char decryptChar(char c, int shiftNumber) {
-        return (char)(c - shiftNumber);
-    }
 }
