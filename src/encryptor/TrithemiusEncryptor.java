@@ -57,6 +57,4 @@ class TrithemiusEncryptor extends CesarEncryptor {
         }
         return res.toString();
     }
-
-
 }

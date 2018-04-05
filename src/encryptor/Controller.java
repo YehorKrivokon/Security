@@ -14,11 +14,15 @@ import java.util.Scanner;
 public class Controller {
     public void Controller(){}
 
-    private Encryptor cesarEncryptor = new CesarEncryptor();
+    private CesarEncryptor cesarEncryptor = new CesarEncryptor();
     private TrithemiusEncryptor trithemiusEncryptor = new TrithemiusEncryptor();
+    private GammaEncryptor gammaEncryptor = new GammaEncryptor();
 
     @FXML
     private TextArea encryptText;
+
+    @FXML
+    private TextField gamma;
 
     @FXML
     private TextField shiftNumber;
@@ -40,6 +44,18 @@ public class Controller {
 
     @FXML
     private TextField phrase;
+
+    @FXML
+    private void encryptTextWithGamma() {
+        String encryptedText = gammaEncryptor.encrypt(encryptText.getText(), gamma.getText());
+        encryptText.setText(encryptedText);
+    }
+
+    @FXML
+    private void decryptTextWithGamma() {
+        String encryptedText = gammaEncryptor.decrypt(encryptText.getText(), gamma.getText());
+        encryptText.setText(encryptedText);
+    }
 
     @FXML
     private void encryptTextWithTrithemiusPhrase() {
@@ -66,6 +82,7 @@ public class Controller {
 
     @FXML
     private void decryptTextWithTrithemiusPhrase() {
+   //     encryptText.focusedProperty().addListener(ar);
         String encryptedText = trithemiusEncryptor.decrypt(encryptText.getText(), shiftNumber.getText());
         encryptText.setText(encryptedText);
     }

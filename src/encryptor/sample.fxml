@@ -52,5 +52,16 @@
         <TextField fx:id="notLinearA" layoutX="160.0" layoutY="95.0" prefHeight="20.0" prefWidth="30.0" text="1"/>
         <TextField fx:id="notLinearB" layoutX="228.0" layoutY="95.0" prefHeight="20.0" prefWidth="30.0" text="1"/>
         <TextField fx:id="notLinearC" layoutX="280.0" layoutY="95.0" prefHeight="20.0" prefWidth="30.0" text="1"/>
+
+        <MenuButton layoutX="315" layoutY="5.0" prefWidth="150" mnemonicParsing="false" text="Gamma">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#encryptTextWithGamma"
+                          text="Encrypt with gamma"/>
+                <MenuItem mnemonicParsing="false" onAction="#decryptTextWithGamma"
+                          text="Decrypt with gamms"/>
+            </items>
+        </MenuButton>
+        <Label layoutX="315" layoutY="45.0" text="Gamma"/>
+        <TextField fx:id="gamma" layoutX="390.0" layoutY="35.0" prefHeight="20.0" prefWidth="75.0" text="1"/>
     </children>
 </Pane>
