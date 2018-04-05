@@ -4,6 +4,8 @@ import java.util.Random;
 
 class GammaEncryptor extends CesarEncryptor {
 
+    private final Random random = new Random();
+
     String encrypt(String text, String gamma) {
         StringBuilder fullGamma = new StringBuilder(gamma);
         StringBuilder res = new StringBuilder();
@@ -11,9 +13,8 @@ class GammaEncryptor extends CesarEncryptor {
             fullGamma.append(gamma);
         }
         for(int i = 0; i < text.length(); ++i) {
-            res.append(encryptChar(text.charAt(i),
-                    new Random((int) fullGamma.charAt(i))
-                            .nextInt(Character.MAX_VALUE)));
+            random.setSeed((int) fullGamma.charAt(i));
+            res.append(encryptChar(text.charAt(i), random.nextInt(Character.MAX_VALUE)));
         }
         return res.toString();
     }
@@ -25,9 +26,8 @@ class GammaEncryptor extends CesarEncryptor {
             fullGamma.append(gamma);
         }
         for(int i = 0; i < text.length(); ++i) {
-            res.append(decryptChar(text.charAt(i),
-                    new Random((int) fullGamma.charAt(i))
-                            .nextInt(Character.MAX_VALUE)));
+            random.setSeed((int) fullGamma.charAt(i));
+            res.append(decryptChar(text.charAt(i), random.nextInt(Character.MAX_VALUE)));
         }
         return res.toString();
     }
