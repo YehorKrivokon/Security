@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.print.Book;
 import java.io.*;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -20,9 +21,13 @@ public class Controller {
     private CesarEncryptor cesarEncryptor = new CesarEncryptor();
     private TrithemiusEncryptor trithemiusEncryptor = new TrithemiusEncryptor();
     private GammaEncryptor gammaEncryptor = new GammaEncryptor();
+    private BookEncryptor bookEncryptor = new BookEncryptor();
 
     @FXML
     private TextArea encryptText;
+
+    @FXML
+    private TextArea poesy;
 
     @FXML
     private TextField gamma;
@@ -58,10 +63,14 @@ public class Controller {
     private Pane gammaPane;
 
     @FXML
+    private Pane bookPane;
+
+    @FXML
     private void caesarChosen() {
         caesarPane.setVisible(true);
         trithemiusPane.setVisible(false);
         gammaPane.setVisible(false);
+        bookPane.setVisible(false);
     }
 
     @FXML
@@ -69,13 +78,29 @@ public class Controller {
         caesarPane.setVisible(false);
         trithemiusPane.setVisible(true);
         gammaPane.setVisible(false);
+        bookPane.setVisible(false);
     }
 
     @FXML
     private void gammaChosen() {
         caesarPane.setVisible(false);
         trithemiusPane.setVisible(false);
+        bookPane.setVisible(false);
         gammaPane.setVisible(true);
+    }
+
+    @FXML
+    private void bookChosen() {
+        caesarPane.setVisible(false);
+        trithemiusPane.setVisible(false);
+        gammaPane.setVisible(false);
+        bookPane.setVisible(true);
+    }
+
+    @FXML
+    private void encryptTextWithBook() {
+        String encryptedText = bookEncryptor.encrypt(encryptText.getText(), poesy.getText());
+        encryptText.setText(encryptedText);
     }
 
     @FXML

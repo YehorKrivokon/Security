@@ -8,66 +8,93 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="encryptor.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0"
+      prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="encryptor.Controller">
     <children>
-        <TextArea fx:id="encryptText" layoutX="5.0" layoutY="160.0" prefHeight="385.0" prefWidth="805.0" />
-      <Pane fx:id="caesarPane" visible="false" layoutX="5" layoutY="35.0">
-         <children>
-              <TextField fx:id="shiftNumber" layoutX="30.0" layoutY="30.0" prefHeight="20.0" prefWidth="120.0" text="1" />
-              <MenuButton fx:id="cesarButton" mnemonicParsing="false" prefWidth="150" text="Cesar">
-                  <items>
-                      <MenuItem mnemonicParsing="false" onAction="#encryptTextWithCesar" text="Encrypt" />
-                      <MenuItem mnemonicParsing="false" onAction="#decryptTextWithCesar" text="Decrypt" />
-                  </items>
-              </MenuButton>
-              <Label fx:id="cesarShift" layoutY="40.0" text="Shift" />
-         </children>
-      </Pane>
-        <Button fx:id="file_open" layoutX="705.0" layoutY="5.0" mnemonicParsing="false" onAction="#choseFile" prefHeight="20.0" prefWidth="50.0" text="Open" />
-        <Button fx:id="file_save" layoutX="760.0" layoutY="5.0" mnemonicParsing="false" onAction="#saveFile" prefHeight="20.0" prefWidth="50.0" text="Save" />
-      <Pane fx:id="trithemiusPane" visible="false" layoutX="5" layoutY="35.0">
-         <children>
-              <MenuButton fx:id="trithemiusButton" mnemonicParsing="false" prefWidth="150" text="Trithemius">
-                  <items>
-                      <MenuItem mnemonicParsing="false" onAction="#encryptTextWithTrithemiusPhrase" text="Encrypt with phrase" />
-                      <MenuItem mnemonicParsing="false" onAction="#decryptTextWithTrithemiusPhrase" text="Decrypt with phrase" />
-                      <MenuItem mnemonicParsing="false" onAction="#encryptTextWithTrithemiusLinear" text="Encrypt with linear" />
-                      <MenuItem mnemonicParsing="false" onAction="#decryptTextWithTrithemiusLinear" text="Decrypt with linear" />
-                      <MenuItem mnemonicParsing="false" onAction="#encryptTextWithTrithemiusNotLinear" text="Encrypt with notLinear" />
-                      <MenuItem mnemonicParsing="false" onAction="#decryptTextWithTrithemiusNotLinear" text="Decrypt with notLinear" />
-                  </items>
-              </MenuButton>
-              <Label fx:id="phraseLabel" layoutY="40.0" text="Phrase" />
-              <TextField fx:id="phrase" layoutX="40.0" layoutY="30.0" prefHeight="20.0" prefWidth="110.0" text="1" />
-              <Label layoutX="67.0" layoutY="70.0" text="p + " />
-              <TextField fx:id="linearA" layoutY="60.0" prefHeight="20.0" prefWidth="60.0" text="1" />
-              <TextField fx:id="linearB" layoutX="90.0" layoutY="60.0" prefHeight="20.0" prefWidth="60.0" text="1" />
-      
-              <Label layoutX="32.0" layoutY="100.0" text="p^2 + " />
-              <Label layoutX="100.0" layoutY="100.0" text="p + " />
-              <TextField fx:id="notLinearA" layoutY="90.0" prefHeight="20.0" prefWidth="30.0" text="1" />
-              <TextField fx:id="notLinearB" layoutX="68.0" layoutY="90.0" prefHeight="20.0" prefWidth="30.0" text="1" />
-              <TextField fx:id="notLinearC" layoutX="120.0" layoutY="90.0" prefHeight="20.0" prefWidth="30.0" text="1" />
-         </children>
-      </Pane>
-      <Pane fx:id="gammaPane" visible="false" layoutX="5" layoutY="35.0">
-         <children>
+        <TextArea fx:id="encryptText" layoutX="5.0" layoutY="160.0" prefHeight="385.0" prefWidth="805.0"/>
+        <Pane fx:id="caesarPane" visible="false" layoutX="5" layoutY="35.0">
+            <children>
+                <TextField fx:id="shiftNumber" layoutX="30.0" layoutY="30.0" prefHeight="20.0" prefWidth="120.0"
+                           text="1"/>
+                <MenuButton fx:id="cesarButton" mnemonicParsing="false" prefWidth="150" text="Cesar">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#encryptTextWithCesar" text="Encrypt"/>
+                        <MenuItem mnemonicParsing="false" onAction="#decryptTextWithCesar" text="Decrypt"/>
+                    </items>
+                </MenuButton>
+                <Label fx:id="cesarShift" layoutY="40.0" text="Shift"/>
+            </children>
+        </Pane>
+        <Button fx:id="file_open" layoutX="705.0" layoutY="5.0" mnemonicParsing="false" onAction="#choseFile"
+                prefHeight="20.0" prefWidth="50.0" text="Open"/>
+        <Button fx:id="file_save" layoutX="760.0" layoutY="5.0" mnemonicParsing="false" onAction="#saveFile"
+                prefHeight="20.0" prefWidth="50.0" text="Save"/>
+        <Pane fx:id="trithemiusPane" visible="false" layoutX="5" layoutY="35.0">
+            <children>
+                <MenuButton fx:id="trithemiusButton" mnemonicParsing="false" prefWidth="150" text="Trithemius">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#encryptTextWithTrithemiusPhrase"
+                                  text="Encrypt with phrase"/>
+                        <MenuItem mnemonicParsing="false" onAction="#decryptTextWithTrithemiusPhrase"
+                                  text="Decrypt with phrase"/>
+                        <MenuItem mnemonicParsing="false" onAction="#encryptTextWithTrithemiusLinear"
+                                  text="Encrypt with linear"/>
+                        <MenuItem mnemonicParsing="false" onAction="#decryptTextWithTrithemiusLinear"
+                                  text="Decrypt with linear"/>
+                        <MenuItem mnemonicParsing="false" onAction="#encryptTextWithTrithemiusNotLinear"
+                                  text="Encrypt with notLinear"/>
+                        <MenuItem mnemonicParsing="false" onAction="#decryptTextWithTrithemiusNotLinear"
+                                  text="Decrypt with notLinear"/>
+                    </items>
+                </MenuButton>
+                <Label fx:id="phraseLabel" layoutY="40.0" text="Phrase"/>
+                <TextField fx:id="phrase" layoutX="40.0" layoutY="30.0" prefHeight="20.0" prefWidth="110.0" text="1"/>
+                <Label layoutX="67.0" layoutY="70.0" text="p + "/>
+                <TextField fx:id="linearA" layoutY="60.0" prefHeight="20.0" prefWidth="60.0" text="1"/>
+                <TextField fx:id="linearB" layoutX="90.0" layoutY="60.0" prefHeight="20.0" prefWidth="60.0" text="1"/>
 
-              <MenuButton mnemonicParsing="false" prefWidth="150" text="Gamma">
-                  <items>
-                      <MenuItem mnemonicParsing="false" onAction="#encryptTextWithGamma" text="Encrypt with gamma" />
-                      <MenuItem mnemonicParsing="false" onAction="#decryptTextWithGamma" text="Decrypt with gamms" />
-                  </items>
-              </MenuButton>
-              <Label layoutY="40.0" text="Gamma" />
-              <TextField fx:id="gamma" layoutX="50.0" layoutY="30.0" prefHeight="20.0" prefWidth="100.0" text="1" />
-         </children>
-      </Pane>
+                <Label layoutX="32.0" layoutY="100.0" text="p^2 + "/>
+                <Label layoutX="100.0" layoutY="100.0" text="p + "/>
+                <TextField fx:id="notLinearA" layoutY="90.0" prefHeight="20.0" prefWidth="30.0" text="1"/>
+                <TextField fx:id="notLinearB" layoutX="68.0" layoutY="90.0" prefHeight="20.0" prefWidth="30.0"
+                           text="1"/>
+                <TextField fx:id="notLinearC" layoutX="120.0" layoutY="90.0" prefHeight="20.0" prefWidth="30.0"
+                           text="1"/>
+            </children>
+        </Pane>
+        <Pane fx:id="gammaPane" visible="false" layoutX="5" layoutY="35.0">
+            <children>
+
+                <MenuButton mnemonicParsing="false" prefWidth="150" text="Gamma">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#encryptTextWithGamma" text="Encrypt with gamma"/>
+                        <MenuItem mnemonicParsing="false" onAction="#decryptTextWithGamma" text="Decrypt with gamms"/>
+                    </items>
+                </MenuButton>
+                <Label layoutY="40.0" text="Gamma"/>
+                <TextField fx:id="gamma" layoutX="50.0" layoutY="30.0" prefHeight="20.0" prefWidth="100.0" text="1"/>
+            </children>
+        </Pane>
+        <Pane fx:id="bookPane" visible="false" layoutX="5" layoutY="35.0">
+            <children>
+
+                <MenuButton mnemonicParsing="false" prefWidth="150" text="Book">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#encryptTextWithBook" text="Encrypt with book"/>
+                        <!--<MenuItem mnemonicParsing="false" onAction="#decryptTextWithBiik" text="Decrypt with book"/>-->
+                    </items>
+                </MenuButton>
+                <Label layoutY="40.0" text="Poesy"/>
+                <TextArea fx:id="poesy" layoutX="50.0" layoutY="30.0" prefHeight="100.0" prefWidth="100.0" text="1"/>
+            </children>
+        </Pane>
         <MenuButton layoutX="5" layoutY="5.0" mnemonicParsing="false" prefWidth="150" text="Algorithm">
             <items>
-                <MenuItem mnemonicParsing="false" onAction="#caesarChosen" text="Caesar" />
-                <MenuItem mnemonicParsing="false" onAction="#trithemiusChosen" text="Trithemius" />
-                <MenuItem mnemonicParsing="false" onAction="#gammaChosen" text="Gamma" />
+                <MenuItem mnemonicParsing="false" onAction="#caesarChosen" text="Caesar"/>
+                <MenuItem mnemonicParsing="false" onAction="#trithemiusChosen" text="Trithemius"/>
+                <MenuItem mnemonicParsing="false" onAction="#gammaChosen" text="Gamma"/>
+                <MenuItem mnemonicParsing="false" onAction="#bookChosen" text="Book"/>
             </items>
         </MenuButton>
     </children>
