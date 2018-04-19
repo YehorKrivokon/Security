@@ -1,9 +1,8 @@
 package encryptor;
 
-public class CesarEncryptor extends Encryptor {
+public class CesarEncryptor {
 
-    @Override
-    public String encrypt(String text, int shiftNumber) {
+    String encrypt(String text, int shiftNumber) {
         if(text.isEmpty()) {
             throw new RuntimeException("Text is empty");
         } else {
@@ -17,8 +16,7 @@ public class CesarEncryptor extends Encryptor {
         }
     }
 
-    @Override
-    public String decrypt(String text, int shiftNumber) {
+    String decrypt(String text, int shiftNumber) {
         if(text.isEmpty()) {
             throw new RuntimeException("Text is empty");
         } else {
@@ -30,6 +28,14 @@ public class CesarEncryptor extends Encryptor {
 
             return res.toString();
         }
+    }
+
+    char encryptChar(char c, int shiftNumber) {
+        return (char)(c + shiftNumber);
+    }
+
+    char decryptChar(char c, int shiftNumber) {
+        return (char)(c - shiftNumber);
     }
 
 }

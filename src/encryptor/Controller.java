@@ -2,8 +2,11 @@ package encryptor;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -44,6 +47,36 @@ public class Controller {
 
     @FXML
     private TextField phrase;
+
+    @FXML
+    private Pane caesarPane;
+
+    @FXML
+    private Pane trithemiusPane;
+
+    @FXML
+    private Pane gammaPane;
+
+    @FXML
+    private void caesarChosen() {
+        caesarPane.setVisible(true);
+        trithemiusPane.setVisible(false);
+        gammaPane.setVisible(false);
+    }
+
+    @FXML
+    private void trithemiusChosen() {
+        caesarPane.setVisible(false);
+        trithemiusPane.setVisible(true);
+        gammaPane.setVisible(false);
+    }
+
+    @FXML
+    private void gammaChosen() {
+        caesarPane.setVisible(false);
+        trithemiusPane.setVisible(false);
+        gammaPane.setVisible(true);
+    }
 
     @FXML
     private void encryptTextWithGamma() {
