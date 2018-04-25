@@ -104,6 +104,12 @@ public class Controller {
     }
 
     @FXML
+    private void decryptTextWithBook() {
+        String encryptedText = bookEncryptor.decrypt(encryptText.getText(), poesy.getText());
+        encryptText.setText(encryptedText);
+    }
+
+    @FXML
     private void encryptTextWithGamma() {
         String encryptedText = gammaEncryptor.encrypt(encryptText.getText(), gamma.getText());
         encryptText.setText(encryptedText);
