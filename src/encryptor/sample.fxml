@@ -89,12 +89,25 @@
                 <TextArea fx:id="poesy" layoutX="50.0" layoutY="30.0" prefHeight="90.0" prefWidth="300.0" text="1"/>
             </children>
         </Pane>
+        <Pane fx:id="desPane" visible="false" layoutX="5" layoutY="35.0">
+            <children>
+                <MenuButton mnemonicParsing="false" prefWidth="150" text="DES">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#encryptTextWithDES" text="Encrypt with DES"/>
+                        <MenuItem mnemonicParsing="false" onAction="#decryptTextWithDES" text="Decrypt with DES"/>
+                    </items>
+                </MenuButton>
+                <Label layoutY="40.0" text="Key"/>
+                <TextField fx:id="desKey" layoutX="30.0" layoutY="30.0" prefHeight="20.0" prefWidth="120.0" text="1"/>
+            </children>
+        </Pane>
         <MenuButton layoutX="5" layoutY="5.0" mnemonicParsing="false" prefWidth="150" text="Algorithm">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#caesarChosen" text="Caesar"/>
                 <MenuItem mnemonicParsing="false" onAction="#trithemiusChosen" text="Trithemius"/>
                 <MenuItem mnemonicParsing="false" onAction="#gammaChosen" text="Gamma"/>
                 <MenuItem mnemonicParsing="false" onAction="#bookChosen" text="Book"/>
+                <MenuItem mnemonicParsing="false" onAction="#desChosen" text="DES"/>
             </items>
         </MenuButton>
     </children>

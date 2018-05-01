@@ -1,6 +1,6 @@
 package encryptor;
 
-public class CesarEncryptor {
+public class CaesarEncryptor {
 
     String encrypt(String text, int shiftNumber) {
         if(text.isEmpty()) {

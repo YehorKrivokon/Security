@@ -2,15 +2,12 @@ package encryptor;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.awt.print.Book;
 import java.io.*;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -18,10 +15,11 @@ import java.util.Scanner;
 public class Controller {
     public void Controller(){}
 
-    private CesarEncryptor cesarEncryptor = new CesarEncryptor();
+    private CaesarEncryptor caesarEncryptor = new CaesarEncryptor();
     private TrithemiusEncryptor trithemiusEncryptor = new TrithemiusEncryptor();
     private GammaEncryptor gammaEncryptor = new GammaEncryptor();
     private BookEncryptor bookEncryptor = new BookEncryptor();
+    private DESEncryptor desEncryptor = new DESEncryptor();
 
     @FXML
     private TextArea encryptText;
@@ -54,6 +52,9 @@ public class Controller {
     private TextField phrase;
 
     @FXML
+    private TextField desKey;
+
+    @FXML
     private Pane caesarPane;
 
     @FXML
@@ -66,11 +67,15 @@ public class Controller {
     private Pane bookPane;
 
     @FXML
+    private Pane desPane;
+
+    @FXML
     private void caesarChosen() {
         caesarPane.setVisible(true);
         trithemiusPane.setVisible(false);
         gammaPane.setVisible(false);
         bookPane.setVisible(false);
+        desPane.setVisible(false);
     }
 
     @FXML
@@ -79,6 +84,7 @@ public class Controller {
         trithemiusPane.setVisible(true);
         gammaPane.setVisible(false);
         bookPane.setVisible(false);
+        desPane.setVisible(false);
     }
 
     @FXML
@@ -87,6 +93,7 @@ public class Controller {
         trithemiusPane.setVisible(false);
         bookPane.setVisible(false);
         gammaPane.setVisible(true);
+        desPane.setVisible(false);
     }
 
     @FXML
@@ -95,6 +102,36 @@ public class Controller {
         trithemiusPane.setVisible(false);
         gammaPane.setVisible(false);
         bookPane.setVisible(true);
+        desPane.setVisible(false);
+    }
+
+    @FXML
+    private void desChosen() {
+        caesarPane.setVisible(false);
+        trithemiusPane.setVisible(false);
+        gammaPane.setVisible(false);
+        bookPane.setVisible(false);
+        desPane.setVisible(true);
+    }
+
+    @FXML
+    private void encryptTextWithDES() {
+        try {
+            String encryptedText = desEncryptor.encrypt(encryptText.getText(), desKey.getText());
+            encryptText.setText(encryptedText);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void decryptTextWithDES() {
+        try {
+            String decryptedText = desEncryptor.decrypt(encryptText.getText(), desKey.getText());
+            encryptText.setText(decryptedText);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -153,7 +190,7 @@ public class Controller {
 
     @FXML
     private void encryptTextWithCesar() {
-        String encryptedText = cesarEncryptor.encrypt(encryptText.getText(),
+        String encryptedText = caesarEncryptor.encrypt(encryptText.getText(),
                 Integer.valueOf(shiftNumber.getText()));
         encryptText.setText(encryptedText);
     }
@@ -177,7 +214,7 @@ public class Controller {
 
     @FXML
     private void decryptTextWithCesar() {
-        String encryptedText = cesarEncryptor.decrypt(encryptText.getText(),
+        String encryptedText = caesarEncryptor.decrypt(encryptText.getText(),
                 Integer.valueOf(shiftNumber.getText()));
         encryptText.setText(encryptedText);
     }

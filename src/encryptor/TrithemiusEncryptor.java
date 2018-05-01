@@ -1,6 +1,6 @@
 package encryptor;
 
-class TrithemiusEncryptor extends CesarEncryptor {
+class TrithemiusEncryptor extends CaesarEncryptor {
 
     String encrypt(String text, String phrase) {
         StringBuilder textPhrase = new StringBuilder(phrase);
