@@ -20,6 +20,7 @@ public class Controller {
     private GammaEncryptor gammaEncryptor = new GammaEncryptor();
     private BookEncryptor bookEncryptor = new BookEncryptor();
     private DESEncryptor desEncryptor = new DESEncryptor();
+    private BackBagEncryptor backBagEncryptor = new BackBagEncryptor();
 
     @FXML
     private TextArea encryptText;
@@ -55,6 +56,15 @@ public class Controller {
     private TextField desKey;
 
     @FXML
+    private TextField backKey;
+
+    @FXML
+    private TextField backM;
+
+    @FXML
+    private TextField backN;
+
+    @FXML
     private Pane caesarPane;
 
     @FXML
@@ -70,7 +80,21 @@ public class Controller {
     private Pane desPane;
 
     @FXML
+    private Pane backPane;
+
+    @FXML
+    private void backChosen() {
+        backPane.setVisible(true);
+        caesarPane.setVisible(false);
+        trithemiusPane.setVisible(false);
+        gammaPane.setVisible(false);
+        bookPane.setVisible(false);
+        desPane.setVisible(false);
+    }
+
+    @FXML
     private void caesarChosen() {
+        backPane.setVisible(false);
         caesarPane.setVisible(true);
         trithemiusPane.setVisible(false);
         gammaPane.setVisible(false);
@@ -80,6 +104,7 @@ public class Controller {
 
     @FXML
     private void trithemiusChosen() {
+        backPane.setVisible(false);
         caesarPane.setVisible(false);
         trithemiusPane.setVisible(true);
         gammaPane.setVisible(false);
@@ -89,6 +114,7 @@ public class Controller {
 
     @FXML
     private void gammaChosen() {
+        backPane.setVisible(false);
         caesarPane.setVisible(false);
         trithemiusPane.setVisible(false);
         bookPane.setVisible(false);
@@ -98,6 +124,7 @@ public class Controller {
 
     @FXML
     private void bookChosen() {
+        backPane.setVisible(false);
         caesarPane.setVisible(false);
         trithemiusPane.setVisible(false);
         gammaPane.setVisible(false);
@@ -107,11 +134,42 @@ public class Controller {
 
     @FXML
     private void desChosen() {
+        backPane.setVisible(false);
         caesarPane.setVisible(false);
         trithemiusPane.setVisible(false);
         gammaPane.setVisible(false);
         bookPane.setVisible(false);
         desPane.setVisible(true);
+    }
+
+    @FXML
+    private void encryptTextWithBack() {
+        try {
+            String encryptedText = backBagEncryptor.encrypt(
+                    encryptText.getText(),
+                    backKey.getText(),
+                    Integer.valueOf(backM.getText()),
+                    Integer.valueOf(backN.getText())
+            );
+            encryptText.setText(encryptedText);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void decryptTextWithBack() {
+        try {
+            String decryptedText = backBagEncryptor.decrypt(
+                    encryptText.getText(),
+                    backKey.getText(),
+                    Integer.valueOf(backM.getText()),
+                    Integer.valueOf(backN.getText())
+            );
+            encryptText.setText(decryptedText);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
